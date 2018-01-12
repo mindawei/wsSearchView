@@ -18,21 +18,23 @@
 var __tipKeys = [];
 // 搜索回调函数 
 var __searchFunction = null;
+// 返回函数 
+var __goBackFunction = null;
 // 应用变量
 var __that = null;
 
 // 初始化函数
-function init(that, hotKeys, tipKeys, searchFunction) {
+function init(that, hotKeys, tipKeys, searchFunction, goBackFunction) {
 
   __that = that;
   __tipKeys = tipKeys;
   __searchFunction = searchFunction;
+  __goBackFunction = goBackFunction;
 
   var temData = {};
   var barHeight = 43;
   var view = {
-    barHeight: barHeight,
-    isShow: false,
+    barHeight: barHeight
   }
   temData.hotKeys = hotKeys;
 
@@ -82,26 +84,7 @@ function wxSearchClear() {
   // 更新数据
   temData.value = "";
   temData.tipKeys = [];
-  temData.view.isShow = true;
   // 更新视图
-  __that.setData({
-    wxSearchData: temData
-  });
-}
-
-// 输入框获得焦点 
-function wxSearchFocus(e) {
-  var temData = __that.data.wxSearchData;
-  temData.view.isShow = true;
-  __that.setData({
-    wxSearchData: temData
-  });
-}
-
-// 失去焦点函数
-function wxSearchBlur(e) {
-  var temData = __that.data.wxSearchData;
-  temData.view.isShow = false;
   __that.setData({
     wxSearchData: temData
   });
@@ -113,19 +96,22 @@ function wxSearchKeyTap(e) {
 }
 
 // 确任或者回车
-function wxSearchConfirm() {
-  search(__that.data.wxSearchData.value);
+function wxSearchConfirm(e) {
+  var key = e.target.dataset.key;
+  if(key=='back'){
+    __goBackFunction();
+  }else{
+    search(__that.data.wxSearchData.value);
+  }
 }
 
 function search(inputValue) {
   if (inputValue && inputValue.length > 0) {
-
     // 添加历史记录
     wxSearchAddHisKey(inputValue);
-    // 隐藏面板
+    // 更新
     var temData = __that.data.wxSearchData;
     temData.value = inputValue;
-    temData.view.isShow = false;
     __that.setData({
       wxSearchData: temData
     });
@@ -190,7 +176,6 @@ function wxSearchDeleteAll() {
       var value = [];
       var temData = __that.data.wxSearchData;
       temData.his = value;
-      temData.view.isShow = true;
       __that.setData({
         wxSearchData: temData
       });
@@ -202,10 +187,8 @@ function wxSearchDeleteAll() {
 module.exports = {
   init: init, //初始化函数
   wxSearchInput: wxSearchInput,// 输入变化时的操作
-  wxSearchFocus: wxSearchFocus, // 输入框获得焦点 
   wxSearchKeyTap: wxSearchKeyTap, // 点击提示或者关键字、历史记录时的操作
   wxSearchDeleteAll: wxSearchDeleteAll, // 删除所有的历史记录
   wxSearchConfirm: wxSearchConfirm, // 搜索函数
   wxSearchClear: wxSearchClear,  // 清空函数
-  wxSearchBlur: wxSearchBlur  // 失去焦点函数
 }

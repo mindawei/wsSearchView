@@ -1,19 +1,22 @@
 <view class="weui-search-bar">
-  <view class="weui-search-bar__form">
+   <view class="weui-search-bar__form">
     <view class="weui-search-bar__box">
       <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{wxSearchData.value}}" bindfocus="wxSerchFocus" bindblur="wxSearchBlur" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" />
+      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{wxSearchData.value}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" />
       <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" bindtap="wxSearchClear">
         <icon type="clear" size="14"></icon>
       </view>
     </view>
   </view>
-  <view class="weui-search-bar__cancel-btn" bindtap="wxSearchConfirm">搜索</view>
+    <view class="weui-search-bar__cancel-btn" bindtap="wxSearchConfirm">
+         <text wx:if="{{wxSearchData.value.length>0}}" data-key='search'>搜索</text>
+         <text wx:else data-key='back'>返回</text>
+     </view>
 </view>
 
-<view class="wxSearch" style="display:{{wxSearchData.view.isShow ? 'block':'none'}};height:{{wxSearchData.view.seachHeight}}px;top:{{wxSearchData.view.barHeight}}px;">
-  <view class="wxSearchInner">
+<view class="wxSearch" style="'block';height:{{wxSearchData.view.seachHeight}}px;top:{{wxSearchData.view.barHeight}}px;">
 
+  <view class="wxSearchInner">
     <!-- 搜索提示部分 -->
     <view class="wxSearchMindKey">
       <view class="wxSearchMindKeyList">
@@ -44,6 +47,5 @@
         </block>
       </view>
     </view>
-
   </view>
 </view>
