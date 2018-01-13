@@ -33,7 +33,7 @@ Page({
   },
 
   // 返回回调函数
-  myGobackFunction: function (value) {
+  myGobackFunction: function () {
     // do your job here
     // 跳转
     wx.redirectTo({
