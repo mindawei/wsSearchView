@@ -6,8 +6,8 @@
 * 减少了暴露接口，复杂性更低。
 
 下面左图是组件效果图，右边是基于这个组件开发的一个<a href="https://github.com/mindawei/weather">天气预报小程序</a>，扫描二维码可以进行体验。
-![wsSearchView效果](screenshoot/wsSearchView.gif)
-![查询天气小程序](screenshoot/weahter-weixin.jpg)
+![wsSearchView效果](docs/wsSearchView.gif)
+![查询天气小程序](docs/weahter-weixin.jpg)
 
 # QuickStart
 1. 拷贝项目根目录的wxSearchView文件夹到你项目的根目录下（也可以其它位置）。
@@ -95,7 +95,7 @@ Page({
 ## 页面关系
 为了避免输入法遮挡的影响，该组件适合放在一个独立的搜索页面中。该搜索页面与其他页面间的关系如下图所示：
 
-![页面关系](screenshoot/page-relation.png)
+![页面关系](docs/page-relation.png)
 
 1. 搜索入口：搜索页面需要一个导入的入口，这个入口可以是一个搜索框，也可以是一些搜索按钮。在本项目中，搜索入口页面是index页面，搜索入口是一个搜索框。
 2. 搜索页面：搜索组件是放在搜索页面中的，直接按照QuickStart中的描述导入即可。搜索页面可以通过返回回调函数跳转到之前的页面中去，可以通过搜索回调函数跳转到具体展示结果的页面中去。在本项目中，搜索页面是search页面，开发者可以进行参考或直接拷贝。
