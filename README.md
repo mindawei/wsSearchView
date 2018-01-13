@@ -1,5 +1,13 @@
 # wsSearchView
-一个简单方便的微信小程序搜索框页面组件
+该搜索框组件基于开源项目<a href="https://github.com/icindy/wxSearch">wxSearch</a> 进行了改进，主要有以下几个修改点：
+* 增加了注释，修改了一些bug，项目可以跑起来。
+* 为了解决搜索框和输入法界面重叠的问题，将搜索组件作为一个独立的页面。
+* 修改了界面样式，更加美观。
+* 减少了暴露接口，复杂性更低。
+
+下面左图是组件效果图，右边是基于这个组件开发的一个<a href="https://github.com/mindawei/weather">天气预报小程序</a>，扫描二维码可以进行体验。
+![wsSearchView效果](screenshoot/wsSearchView.gif)
+![查询天气小程序](screenshoot/weahter-weixin.jpg)
 
 # QuickStart
 1. 拷贝项目根目录的wxSearchView文件夹到你项目的根目录下（也可以其它位置）。
