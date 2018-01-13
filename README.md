@@ -65,7 +65,7 @@ Page({
   },
 
   // 5 返回回调函数
-  myGobackFunction: function (value) {
+  myGobackFunction: function () {
     // do your job here
     // 示例：返回
     wx.redirectTo({
@@ -75,3 +75,23 @@ Page({
 
 })
 ```
+
+# 说明
+## 回调函数
+为了方便调用，提高开发效率，组件实际上只是提供了两个回调接口，开发者也只需要提供这两个函数，介绍如下：
+1.  搜索回调函数，下面是一个例子。当用户点击历史记录、搜索热点、搜索提示、搜索按钮时，都会回调开发者提供的函数接口，开发者拿到参数后可以跳到另一个页面展示查询结果。
+```
+  mySearchFunction: function (value) {
+    // do your job here
+  }
+```  
+2. 返回回调函数，下面是一个例子。搜索框边上的按钮有两个角色，当输入为空的时候，是一个返回按钮；当输入不为空时，是一个搜索按钮。当点击返回按钮时，就会回调开发者提供的函数，这里可以跳回到指定页面。
+```
+  myGobackFunction: function () {
+    // do your job here
+  }
+```
+## 帮助理解
+1. 如果对微信中模块的提供方式不是很清楚的话，可以参考我之前的一篇介绍文章：<a href="https://wlwb.github.io/2018/01/09/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A8%A1%E5%9D%97%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/">《微信小程序模块组件开发》</a>。
+2. 本项目提供了一个使用demo，但是没有涉及到具体查询情况，更加完整的使用过程可以参考：<a href="https://github.com/mindawei/weather">天气预报小程序</a>。
+
