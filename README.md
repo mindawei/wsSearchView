@@ -11,11 +11,11 @@
 
 # QuickStart
 1. 拷贝项目根目录的wxSearchView文件夹到你项目的根目录下（也可以其它位置）。
-2. 在你的wxss文件里导入组件的样式（位置为相对位置）：
+2. 在你的wxss文件里导入组件的样式（文件位置为相对位置）：
 ```
 @import "../../wxSearchView/wxSearchView.wxss";
 ```
-3. 在你的wxml文件里导入组件（位置为相对位置）：
+3. 在你的wxml文件里导入组件（文件位置为相对位置）：
 ```
 <include src="../../wxSearchView/wxSearchView.wxml" />
 ```
@@ -91,6 +91,20 @@ Page({
     // do your job here
   }
 ```
+
+## 界面修改位置
+为了提高开发者的开发效率，下表列出了了一些常用修改的位置。
+
+| 界面效果       | 修改位置 | 
+| ------------- |:-------------:| 
+| 标签宽度       | wxSearchView.wxss -> .wxSearchKeyItem -> flex |
+| 标签背景色     | wxSearchView.wxss -> .wxSearchKeyItem -> background-color |
+| 页面背景色     | wxSearchView.wxss -> .wxSearch -> background-color |
+| 提示面板背景色  | wxSearchView.wxss -> .wxSearchInner -> background-color |
+| 返回按钮不需要 | wxSearchView.wxml -> 搜索 weui-search-bar__cancel-btn |
+| 搜索提示修改 | wxSearchView.wxml -> 搜索 wxSearchMindKey |
+| ... | ... |
+
 ## 帮助理解
 1. 如果对微信中模块的提供方式不是很清楚的话，可以参考我之前的一篇介绍文章：<a href="https://wlwb.github.io/2018/01/09/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A8%A1%E5%9D%97%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/">《微信小程序模块组件开发》</a>。
 2. 本项目提供了一个使用demo，但是没有涉及到具体查询情况，更加完整的使用过程可以参考：<a href="https://github.com/mindawei/weather">天气预报小程序</a>。
